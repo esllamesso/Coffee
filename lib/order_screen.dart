@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutterfirst/core/colors_manager.dart';
 import 'package:flutterfirst/details_screen.dart';
-import 'package:flutterfirst/widgets/header_widget.dart';
+import 'package:flutterfirst/widgets/header_widget_order.dart';
 
 class OrderScreen extends StatefulWidget {
   final String productName;
@@ -18,7 +18,6 @@ class OrderScreen extends StatefulWidget {
 }
 
 class _OrderScreenState extends State<OrderScreen> {
-  bool isFav = false;
   String orderTypeText =
       "Delivery Address Jl. Kpg Sutoyo Kpg. Sutoyo No. 620, Bilzen, Tanjungbalai.";
   String selectedOption = "Deliver";
@@ -48,9 +47,8 @@ class _OrderScreenState extends State<OrderScreen> {
           SizedBox(height: 40),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 16),
-            child: HeaderWidget(
+            child: HeaderWidgetOrder(
               title: "Order",
-              isFav: isFav,
               onBack: () {
                 Navigator.pushReplacement(
                   context,
@@ -523,12 +521,14 @@ class _OrderScreenState extends State<OrderScreen> {
                         ),
                       ),
                       SizedBox(width: 10),
-                      Text(
-                        "\$${totalPrice.toStringAsFixed(2)}",
-                        style: TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w400,
-                          color: ColorsManager.blackTextColor,
+                      Expanded(
+                        child: Text(
+                          "\$${totalPrice.toStringAsFixed(1)}",
+                          style: TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w400,
+                            color: ColorsManager.blackTextColor,
+                          ),
                         ),
                       ),
                       SizedBox(width: 127),
@@ -546,7 +546,7 @@ class _OrderScreenState extends State<OrderScreen> {
                   Material(
                     borderRadius: BorderRadius.circular(16),
                     child: InkWell(
-                      onTap: (){},
+                      onTap: () {},
                       borderRadius: BorderRadius.circular(16),
                       child: Container(
                         width: 315,
@@ -577,3 +577,5 @@ class _OrderScreenState extends State<OrderScreen> {
     );
   }
 }
+
+

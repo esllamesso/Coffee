@@ -95,11 +95,13 @@ class _SizeWidgetState extends State<SizeWidget> {
         Container(
           width: double.infinity,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20)),
+            border: Border.all(color: ColorsManager.grayTextColor, width: 1),
+
           ),
 
           child: Padding(
-            padding: const EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(28.0),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
