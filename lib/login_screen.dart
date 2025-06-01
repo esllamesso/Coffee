@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutterfirst/core/colors_manager.dart';
 import 'package:flutterfirst/details_screen.dart';
 import 'package:flutterfirst/home_screen.dart';
+import 'package:flutterfirst/order_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -47,6 +49,7 @@ class LoginScreen extends StatelessWidget {
                 ),
                 InkWell(
                   onTap: () {
+                    ColorsManager.selectedscreen = "d";
                     Navigator.pushReplacement(context, MaterialPageRoute(builder:  (context)=>HomeScreen()));
                   },
                   child: Container(

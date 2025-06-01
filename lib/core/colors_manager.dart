@@ -14,4 +14,5 @@ class ColorsManager{
   static Color lineTextColor = Color.fromRGBO(234, 234, 234, 1);
   static Color softgrayTextColor = Color.fromRGBO(128, 128, 128, 1);
   static Color bgrayTextColor = Color.fromRGBO(221, 221, 221, 1);
+  static String selectedscreen = "";
 }

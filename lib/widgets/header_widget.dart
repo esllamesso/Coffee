@@ -21,9 +21,12 @@ class HeaderWidget extends StatefulWidget {
 class _HeaderWidgetState extends State<HeaderWidget> {
   bool isFav = false;
 
+
   @override
   Widget build(BuildContext context) {
-    return Row(
+
+
+      return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         IconButton(

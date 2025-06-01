@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterfirst/core/colors_manager.dart';
+import 'package:flutterfirst/widgets/nav_bar_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -16,7 +17,9 @@ class _HomeScreenState extends State<HomeScreen> {
     'Americano',
     'Espresso',
   ];
+
   int selectedIndex = 0;
+  int _currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -139,7 +142,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(height: 110),
+                      SizedBox(height: 145),
                       SizedBox(
                         height: 40,
                         child: ListView.builder(
@@ -155,10 +158,8 @@ class _HomeScreenState extends State<HomeScreen> {
                               },
                               child: Container(
                                 height: 32,
-                                margin:  EdgeInsets.symmetric(
-                                  horizontal: 4,
-                                ),
-                                padding:  EdgeInsets.symmetric(
+                                margin: EdgeInsets.symmetric(horizontal: 4),
+                                padding: EdgeInsets.symmetric(
                                   horizontal: 8,
                                   vertical: 10,
                                 ),
@@ -189,6 +190,97 @@ class _HomeScreenState extends State<HomeScreen> {
                           },
                         ),
                       ),
+                      Expanded(
+                        child: GridView.builder(
+                          gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 2,
+                                mainAxisSpacing: 8,
+                                crossAxisSpacing: 8,
+                                childAspectRatio: 0.8,
+                              ),
+                          itemCount: 4,
+                          itemBuilder: (context, index) {
+                            final items = productNames[selectedIndex];
+                            return Padding(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 12.0,
+                              ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Stack(
+                                    children: [
+                                      Image.asset(
+                                        "assets/images/coffeeGrid.png",width: double.infinity,
+                                        fit: BoxFit.cover,
+                                      ),
+                                      Positioned(
+                                        top: 4,
+                                        left: 25,
+                                        child: Text("4.8",
+                                        style: TextStyle(
+                                          color: ColorsManager.whiteTextColor,
+                                        ),),
+                                      ),
+                                      Positioned(
+                                        top: 7,
+                                          left: 8,
+
+                                          child: Image.asset("assets/images/star.png")),
+                                    ],
+                                  ),
+
+                                  SizedBox(height: 8),
+
+                                  Text(
+                                    productNames[index],
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w600,
+                                      color: ColorsManager.blackTextColor,
+                                    ),
+                                  ),
+
+                                  Text(
+                                    "with Chocolate",
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w400,
+                                      color: ColorsManager.bgrayTextColor,
+                                    ),
+                                  ),
+                                  Row(
+                                    children: [
+                                      Text(
+                                        "\$ 4.53",
+                                        style: TextStyle(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+Spacer(),                                      Container(
+                                        width: 32,
+                                        height: 32,
+                                        decoration: BoxDecoration(
+                                          color: ColorsManager.goldtrTextColor,
+                                          borderRadius: BorderRadius.circular(
+                                            10,
+                                          ),
+                                        ),
+                                        child: Icon(
+                                          Icons.add,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            );
+                          },
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -209,6 +301,16 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
+      bottomNavigationBar: NavBarWidget(
+        currentIndex: _currentIndex,
+        onTap: (index) {
+          setState(() {
+            _currentIndex = index;
+          });
+        },
+      ),
+
+
     );
   }
 }

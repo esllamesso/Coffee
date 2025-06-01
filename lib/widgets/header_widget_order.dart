@@ -29,6 +29,7 @@ class _HeaderWidgetState extends State<HeaderWidgetOrder> {
           widget.onBack ?? () => Navigator.pop(context),
           icon: Icon(Icons.arrow_back_ios, size: 24),
         ),
+        SizedBox(width: 120,),
         Text(
           widget.title,
           style: TextStyle(

@@ -136,6 +136,7 @@ class _SizeWidgetState extends State<SizeWidget> {
                   child: InkWell(
                     borderRadius: BorderRadius.circular(16),
                     onTap: () {
+                      ColorsManager.selectedscreen = "o";
                       Navigator.pushReplacement(context, MaterialPageRoute(builder:  (context)=>OrderScreen(
 
                           productName: "Cappucino", price: currentPrice,
